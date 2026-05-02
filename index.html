@@ -236,33 +236,40 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
       <div class="card-title">Step 1</div>
       <div class="card-heading">Peak TR Velocity</div>
       <div class="trv-options">
-        <button class="trv-option" onclick="selectTRV(this,'low')" data-trv="low">≤2.8 m/s<br/><span style="font-size:0.7rem;font-weight:400">or not measurable</span></button>
+        <button class="trv-option" onclick="selectTRV(this,'low')" data-trv="low">&lt;2.8 m/s<br/><span style="font-size:0.7rem;font-weight:400">or not measurable</span></button>
+        <button class="trv-option" onclick="selectTRV(this,'low28')" data-trv="low28">2.8 m/s<br/><span style="font-size:0.7rem;font-weight:400">borderline — signs matter</span></button>
         <button class="trv-option" onclick="selectTRV(this,'mid')" data-trv="mid">2.9–3.4 m/s</button>
         <button class="trv-option" onclick="selectTRV(this,'high')" data-trv="high">&gt;3.4 m/s</button>
       </div>
 
       <div class="card-title" style="margin-top:14px;">Step 2 — Category A: Ventricles</div>
-      <div class="cat-header cat-a">A — Ventricular Signs</div>
+      <div class="cat-header cat-a">A — Ventricular Signs <span style="font-size:0.7rem;font-weight:400;color:#718096;">(formal guideline criteria)</span></div>
       <div class="check-group" id="cat-a">
         <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>RV/LV basal diameter ratio &gt;1.0</strong><span>RV-focused apical 4-chamber</span></label></label>
         <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>LV eccentricity index (LVEI) &gt;1.1</strong><span>PSAX at papillary muscle level — systole and/or diastole</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>TAPSE/PASP &lt;0.55 mm/mm Hg</strong><span>RV-PA coupling index</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>RV free-wall longitudinal strain &gt;−20%</strong><span>Less negative than −20% = impaired</span></label></label>
+      </div>
+      <div style="font-size:0.72rem;font-weight:700;color:#718096;text-transform:uppercase;letter-spacing:0.06em;margin:6px 0 4px;padding-left:4px;">Supportive / Prognostic (not formal probability criteria)</div>
+      <div class="check-group">
+        <label class="check-item" style="opacity:0.75;pointer-events:none;"><input type="checkbox" disabled><label><strong>TAPSE/PASP &lt;0.55 mm/mm Hg</strong><span>RV-PA coupling — prognostic, not in formal probability matrix</span></label></label>
+        <label class="check-item" style="opacity:0.75;pointer-events:none;"><input type="checkbox" disabled><label><strong>RV free-wall strain &gt;−20%</strong><span>Prognostic marker — not in formal ESC/ASE probability criteria</span></label></label>
       </div>
 
-      <div class="cat-header cat-b">B — Pulmonary Artery Signs</div>
+      <div class="cat-header cat-b">B — Pulmonary Artery Signs <span style="font-size:0.7rem;font-weight:400;color:#718096;">(formal guideline criteria)</span></div>
       <div class="check-group" id="cat-b">
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>RVOT AccT &lt;105 ms and/or mid-systolic notching</strong><span>PSAX PA-bifurcation view</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>Early diastolic PR velocity &gt;2.2 m/s</strong><span>End-diastolic PR velocity</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>PA diameter &gt;25 mm</strong><span>End-diastole, PSAX</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>PA/Aorta ratio ≥1.0</strong><span>PSAX or TEE</span></label></label>
+        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>Mid-systolic RVOT notching ("W sign")</strong><span>PSAX PA-bifurcation view — high PVR marker</span></label></label>
+        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>End-diastolic PR velocity &gt;2.2 m/s</strong><span>PSAX, CW Doppler at pulmonic valve</span></label></label>
+      </div>
+      <div style="font-size:0.72rem;font-weight:700;color:#718096;text-transform:uppercase;letter-spacing:0.06em;margin:6px 0 4px;padding-left:4px;">Supportive (not in formal probability criteria)</div>
+      <div class="check-group">
+        <label class="check-item" style="opacity:0.75;pointer-events:none;"><input type="checkbox" disabled><label><strong>PA diameter &gt;25 mm</strong><span>Supportive — non-specific, seen across all WSPH groups</span></label></label>
+        <label class="check-item" style="opacity:0.75;pointer-events:none;"><input type="checkbox" disabled><label><strong>PA/Aorta ratio ≥1.0</strong><span>Supportive — adjunctive finding</span></label></label>
+        <label class="check-item" style="opacity:0.75;pointer-events:none;"><input type="checkbox" disabled><label><strong>RVOT AccT &lt;105 ms</strong><span>Supportive — also used for mPAP estimation</span></label></label>
       </div>
 
-      <div class="cat-header cat-c">C — IVC and RA Signs</div>
+      <div class="cat-header cat-c">C — IVC and RA Signs <span style="font-size:0.7rem;font-weight:400;color:#718096;">(formal guideline criteria)</span></div>
       <div class="check-group" id="cat-c">
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>IVC &gt;21 mm with decreased collapse (&lt;50% sniff)</strong><span>Subcostal long-axis at end-expiration</span></label></label>
+        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>IVC &gt;21 mm with decreased inspiratory collapse</strong><span>Subcostal long-axis — &lt;50% sniff or &lt;20% quiet respiration</span></label></label>
         <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>RA area &gt;18 cm²</strong><span>RA-focused view, end-systole</span></label></label>
-        <label class="check-item"><input type="checkbox" onchange="calcPH()"><label><strong>Elevated RA volume index</strong><span>RAVi &gt;30 mL/m² (MOD method)</span></label></label>
       </div>
     </div>
 
@@ -280,8 +287,9 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
       <div class="card-subheading">Probability Matrix</div>
       <table class="param-table">
         <tr><th>Peak TRV</th><th>Other Signs</th><th>Probability</th></tr>
-        <tr><td>≤2.8 m/s or N/M</td><td>None</td><td><span class="badge badge-low">Low</span></td></tr>
-        <tr><td>≤2.8 m/s or N/M</td><td>Present (≥2 categories)</td><td><span class="badge badge-intermediate">Intermediate</span></td></tr>
+        <tr><td>&lt;2.8 m/s or N/M</td><td>None</td><td><span class="badge badge-low">Low</span></td></tr>
+        <tr><td>&lt;2.8 m/s or N/M</td><td>Present (≥2 categories)</td><td><span class="badge badge-intermediate">Intermediate</span></td></tr>
+        <tr><td>2.8 m/s</td><td>Present (≥2 categories)</td><td><span class="badge badge-intermediate">Intermediate</span></td></tr>
         <tr><td>2.9–3.4 m/s</td><td>None</td><td><span class="badge badge-intermediate">Intermediate</span></td></tr>
         <tr><td>2.9–3.4 m/s</td><td>Present (≥2 categories)</td><td><span class="badge badge-high">High</span></td></tr>
         <tr><td>&gt;3.4 m/s</td><td>Any</td><td><span class="badge badge-high">High</span></td></tr>
@@ -448,17 +456,22 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
     </div>
 
     <div class="card">
-      <div class="card-heading">RV Diastolic Function Patterns</div>
+      <div class="card-heading">RV Diastolic Function — Two Contexts</div>
+      <div class="info-note blue" style="margin-bottom:10px;">📖 The guideline provides two separate frameworks: (1) Table 1 grades deceleration time by severity; (2) Table 6 classifies diastolic pattern (impaired/pseudonormal/restrictive). These are distinct uses — the table below shows the pattern classification (Table 6).</div>
       <table class="param-table">
-        <tr><th>Parameter</th><th>Normal</th><th>Impaired</th><th>Pseudonormal</th><th>Restrictive</th></tr>
-        <tr><td class="label">E/A</td><td class="val">0.8–&lt;2.0</td><td class="val">&lt;0.8</td><td class="val">0.8–2.1</td><td class="val severe">&gt;2.1</td></tr>
-        <tr><td class="label">DT (ms)</td><td class="val">120–230</td><td class="val">&gt;230</td><td class="val">120–230</td><td class="val severe">&lt;120</td></tr>
-        <tr><td class="label">e′/a′</td><td class="val">0.5–&lt;1.8</td><td class="val">&lt;1</td><td class="val">&lt;1</td><td class="val severe">&lt;1</td></tr>
-        <tr><td class="label">E/e′</td><td class="val normal">&lt;6</td><td class="val">6–7.3</td><td class="val moderate">7.3–8.4</td><td class="val severe">≥8.5</td></tr>
+        <tr><th>Parameter</th><th>Normal</th><th>Impaired Relaxation</th><th>Pseudonormal</th><th>Restrictive</th></tr>
+        <tr><td class="label">E/A ratio</td><td class="val">0.8–&lt;2.0</td><td class="val">&lt;0.8</td><td class="val">0.8–2.1</td><td class="val severe">&gt;2.1</td></tr>
+        <tr><td class="label">DT (ms) — Pattern (Table 6)</td><td class="val">120–230</td><td class="val">&gt;230</td><td class="val">120–230</td><td class="val severe">&lt;120</td></tr>
+        <tr><td class="label">e′/a′ ratio</td><td class="val">0.5–&lt;1.8</td><td class="val">&lt;1.0</td><td class="val">&lt;1.0</td><td class="val severe">&lt;1.0</td></tr>
+        <tr><td class="label">E/e′</td><td class="val normal">&lt;6.0</td><td class="val">6.0–7.3</td><td class="val moderate">7.3–8.4</td><td class="val severe">≥8.5</td></tr>
         <tr><td class="label">IVRT (ms)</td><td class="val normal">≤73</td><td class="val">&gt;73</td><td class="val">&gt;73</td><td class="val">&gt;73</td></tr>
         <tr><td class="label">HV S/D ratio</td><td class="val normal">≥1</td><td class="val">≥1</td><td class="val moderate">&lt;1</td><td class="val severe">&lt;1</td></tr>
         <tr><td class="label">PA diastolic antegrade</td><td class="val">No</td><td class="val">No</td><td class="val">Yes</td><td class="val severe">Yes</td></tr>
       </table>
+      <div style="margin-top:10px;font-size:0.79rem;color:#4a5568;background:#f7fafc;border-radius:6px;padding:10px 12px;">
+        <strong>DT graded severity (Table 1):</strong> Normal 120–230 ms · Mild 87–&lt;120 ms · Moderate 57–&lt;87 ms · Severe ≤57 ms<br/>
+        <strong>e′/a′ graded severity (Table 1):</strong> Normal 0.5–&lt;1.8 · Mildly abnormal 1.8–2.1 · Moderate &gt;2.1–2.4 · Severe ≥2.5
+      </div>
 
       <div class="divider"></div>
       <div class="card-subheading">RV Remodeling Stages in PH</div>
@@ -551,8 +564,8 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
       <div class="card-heading">Hemodynamic Parameters — Normal Ranges &amp; Grading</div>
       <table class="param-table">
         <tr><th>Parameter</th><th>Normal</th><th>Mild elevation</th><th>Moderate elevation</th><th>Severe elevation</th><th>Notes</th></tr>
-        <tr><td class="label">Peak TR velocity (m/s)</td><td class="val normal">&lt;2.8</td><td class="val mild">2.8–3.1</td><td class="val moderate">3.2–3.5</td><td class="val severe">≥3.6</td><td style="font-size:0.74rem;color:#718096;">≥2.9 with signs → PH probability ↑</td></tr>
-        <tr><td class="label">RVSP (mm Hg)</td><td class="val normal">≤34</td><td class="val mild">35–49</td><td class="val moderate">50–69</td><td class="val severe">≥70</td><td style="font-size:0.74rem;color:#718096;">= PASP if no PS/RVOT obstruction</td></tr>
+        <tr><td class="label">Peak TR velocity (m/s)</td><td class="val normal">&lt;2.8</td><td class="val mild">2.8–3.1</td><td class="val moderate">3.2–3.5</td><td class="val severe">≥3.6</td><td style="font-size:0.74rem;color:#718096;">≥2.9 m/s, OR ≥2.8 m/s with ≥2 adjunctive signs → PH probability ↑</td></tr>
+        <tr><td class="label">RVSP (mm Hg)</td><td class="val normal">≤34</td><td class="val mild">35–49</td><td class="val moderate">50–69</td><td class="val severe">≥70</td><td style="font-size:0.74rem;color:#718096;">= PASP if no PS or RVOT obstruction</td></tr>
         <tr><td class="label">RAP (mm Hg)</td><td class="val normal">0–5 (mean 3)</td><td class="val mild">5–10 (mean 8)</td><td class="val moderate">10–15</td><td class="val severe">≥15 (high ≥20)</td><td style="font-size:0.74rem;color:#718096;">Report as discrete number: 3, 8, 15, or 20</td></tr>
         <tr><td class="label">RVOT AccT (ms)</td><td class="val normal">&gt;105</td><td class="val mild">80–105</td><td class="val moderate">60–80</td><td class="val severe">≤60</td><td style="font-size:0.74rem;color:#718096;">"W sign" mid-systolic notch = high PVR</td></tr>
         <tr><td class="label">PR end-diastolic V (m/s)</td><td class="val normal">&lt;2.2</td><td colspan="3" class="val severe">≥2.2 = abnormal</td><td style="font-size:0.74rem;color:#718096;">For PAEDP estimation</td></tr>
@@ -655,7 +668,8 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
     <div class="info-note blue">
       <strong>Abnormal pulmonary vascular response:</strong> Rest-to-stress RVSP rise ≥20 mm Hg or peak RVSP ≥50 mm Hg.<br/>
       <strong>Post-capillary pattern:</strong> Mitral E/e′ at exercise &gt;12; worsening MR or TR with stress.<br/>
-      <strong>Exercise PH definition (ESC/ERS):</strong> mPAP/CO slope &gt;3.0–3.5 mm Hg·min/L.<br/>
+      <strong>Exercise PH definition (ESC/ERS):</strong> mPAP/CO slope &gt;3 mm Hg·min/L (Wood units equivalent). The "3.0–3.5" range reflects diagnostic uncertainty at borderline values.<br/>
+      <strong>Echo stress criteria:</strong> Rest-to-stress RVSP rise ≥20 mm Hg, or peak stress RVSP ≥50 mm Hg = abnormal pulmonary vascular response.<br/>
       <strong>Prognostic sign:</strong> PASP rise ≥30 mm Hg with exertion = preserved RV contractile reserve = better survival.
     </div>
   </div>
@@ -710,7 +724,7 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
 
       <div class="divider"></div>
       <div class="card-subheading">Secondary Indices of Elevated RAP</div>
-      <p style="font-size:0.79rem;color:#4a5568;margin-bottom:8px;">Used to upgrade indeterminate cases (RAP 8 → 15):</p>
+      <p style="font-size:0.79rem;color:#4a5568;margin-bottom:8px;">May support reclassification of indeterminate cases in appropriate clinical context — not an automatic upgrade:</p>
       <div style="display:flex;flex-direction:column;gap:5px;font-size:0.79rem;color:#4a5568;">
         <div style="padding:5px 10px;background:#fff5f5;border-radius:5px;border-left:3px solid #742a2a;">RA enlargement (area &gt;18 cm²)</div>
         <div style="padding:5px 10px;background:#fff5f5;border-radius:5px;border-left:3px solid #742a2a;">Bulging IAS into LA throughout cardiac cycle</div>
@@ -731,7 +745,7 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
         <tr><td>&gt;21 mm</td><td>&lt;50%</td><td class="val severe">15 mm Hg</td><td>10–20</td></tr>
         <tr><td>&gt;25 mm, no variation, dilated HVs</td><td>None</td><td class="val severe">20 mm Hg</td><td>—</td></tr>
       </table>
-      <p style="font-size:0.75rem;color:#718096;">*Assess secondary indices to confirm vs upgrade to 15</p>
+      <p style="font-size:0.75rem;color:#718096;">*Assess secondary indices — may support reclassification to 15 mm Hg in appropriate clinical context, not mandatory</p>
 
       <div class="divider"></div>
       <div class="card-subheading">Caveats</div>
@@ -942,7 +956,7 @@ footer { text-align: center; padding: 18px; font-size: 0.77rem; color: #718096; 
       <div class="card-heading">New Concepts &amp; Standards</div>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:0.81rem;">
         <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>RV-PA Coupling (TAPSE/PASP):</strong> <span style="color:#718096;">Now a primary index in every PH report. Alternatives: RVFWS/PASP (superior in PAH), FAC/PASP</span></div>
-        <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>RV Strain (STE) — Standard:</strong> <span style="color:#718096;">RVFWS preferred to isolate RV from LV contractility. Required for PH and at-risk populations. Same vendor for serial comparison</span></div>
+        <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>RV Strain (STE) — Recommended:</strong> <span style="color:#718096;">RVFWS preferred to isolate RV from LV contractility. Should be performed when feasible for PH and at-risk patients — not absolutely required. Same vendor for serial comparison.</span></div>
         <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>PH Probability Framework:</strong> <span style="color:#718096;">Low/Intermediate/High based on TRV + signs from 3 categories (A: ventricles, B: PA, C: IVC/RA). Replaces single-threshold approach</span></div>
         <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>RAP — Discrete Values:</strong> <span style="color:#718096;">Report 3, 8, 15, or 20 mm Hg — not ranges. Secondary indices determine indeterminate cases</span></div>
         <div style="padding:8px 12px;background:#f7fafc;border-radius:7px;border-left:3px solid #276749;"><strong>RA Strain:</strong> <span style="color:#718096;">Decreased RA reservoir strain + increased RAVi predict clinical worsening in pre-capillary PH</span></div>
@@ -990,7 +1004,6 @@ function selectTRV(btn, level) {
 
 function calcPH() {
   if (!trvLevel) return;
-  const checks = document.querySelectorAll('.check-group input[type=checkbox]');
   const aChecks = document.querySelectorAll('#cat-a input[type=checkbox]');
   const bChecks = document.querySelectorAll('#cat-b input[type=checkbox]');
   const cChecks = document.querySelectorAll('#cat-c input[type=checkbox]');
@@ -1010,13 +1023,21 @@ function calcPH() {
     note = `TRV 2.9–3.4 m/s + signs in ${categoriesPositive}/3 categories → High probability. Refer for RHC.`;
   } else if (trvLevel === 'mid') {
     prob = 'Intermediate'; cls = 'intermediate';
-    note = `TRV 2.9–3.4 m/s, signs in ${categoriesPositive}/3 categories (need ≥2) → Intermediate probability. Consider further evaluation based on clinical context.`;
+    note = `TRV 2.9–3.4 m/s, signs in ${categoriesPositive}/3 categories (need ≥2 for High) → Intermediate probability. Consider further evaluation based on clinical context.`;
+  } else if (trvLevel === 'low28') {
+    if (signsPresent) {
+      prob = 'Intermediate'; cls = 'intermediate';
+      note = `TRV 2.8 m/s + signs in ${categoriesPositive}/3 categories — guideline footnote notes that TRV ≥2.8 m/s with ≥2 adjunctive signs may suggest PH → Intermediate probability. Consider further evaluation.`;
+    } else {
+      prob = 'Low–Intermediate'; cls = 'intermediate';
+      note = `TRV 2.8 m/s with signs in ${categoriesPositive}/3 categories (need ≥2). Guideline grades this as mild elevation — borderline. Clinical context is critical.`;
+    }
   } else if (trvLevel === 'low' && signsPresent) {
     prob = 'Intermediate'; cls = 'intermediate';
-    note = `TRV ≤2.8 m/s + signs in ${categoriesPositive}/3 categories → Intermediate probability. Consider further evaluation.`;
+    note = `TRV <2.8 m/s + signs in ${categoriesPositive}/3 categories → Intermediate probability. Consider further evaluation.`;
   } else {
     prob = 'Low'; cls = 'low';
-    note = `TRV ≤2.8 m/s with signs in ${categoriesPositive}/3 categories → Low probability. Reassess if clinical suspicion is high.`;
+    note = `TRV <2.8 m/s with signs in ${categoriesPositive}/3 categories → Low probability. Reassess if clinical suspicion remains high.`;
   }
 
   const box = document.getElementById('ph-result-box');
